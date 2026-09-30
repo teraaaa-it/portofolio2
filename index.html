@@ -45,15 +45,6 @@ section{padding:60px 0; border-bottom:1px solid var(--line);}
 .sec-head h2{font-family:var(--display); font-size:28px; text-transform:uppercase; margin:0; letter-spacing:-0.01em;}
 .sec-head span{font-family:var(--mono); font-size:12px; color:var(--sub);}
 
-/* WORKS */
-.worklist a{display:flex; align-items:center; justify-content:space-between; padding:26px 4px; border-top:1px solid var(--line); gap:20px; transition:background .15s;}
-.worklist a:first-child{border-top:none}
-.worklist a:hover{background:rgba(255,255,255,.02); color:var(--accent);}
-.work-l{display:flex; flex-direction:column; gap:4px;}
-.work-l .tag{font-family:var(--mono); font-size:11px; color:var(--sub); text-transform:uppercase;}
-.work-l .title{font-family:var(--display); font-size:clamp(20px,3vw,30px); text-transform:uppercase;}
-.arrow{font-size:22px; flex:none;}
-
 /* CAPABILITIES */
 .caplist{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
 @media(max-width:760px){.caplist{grid-template-columns:1fr 1fr}}
@@ -92,7 +83,7 @@ footer{padding:50px 0 60px;}
 
 <header><div class="header-in">
   <div class="wordmark">PADIO JUFENDRA</div>
-  <nav><a href="#work">Proyek</a><a href="#about">Tentang</a><a href="#faq">FAQ</a><a href="#contact">Kontak</a></nav>
+  <nav><a href="#about">Tentang</a><a href="#faq">FAQ</a><a href="#contact">Kontak</a></nav>
 </div></header>
 
 <section class="hero">
@@ -103,19 +94,7 @@ footer{padding:50px 0 60px;}
     <svg class="barcode" viewBox="0 0 300 30" fill="var(--ink)"><rect x="0" y="0" width="2" height="30"/><rect x="6" y="0" width="1" height="30"/><rect x="10" y="0" width="3" height="30"/><rect x="18" y="0" width="1" height="30"/><rect x="23" y="0" width="4" height="30"/><rect x="31" y="0" width="2" height="30"/><rect x="37" y="0" width="1" height="30"/><rect x="42" y="0" width="3" height="30"/><rect x="50" y="0" width="1" height="30"/><rect x="55" y="0" width="2" height="30"/><rect x="61" y="0" width="4" height="30"/><rect x="70" y="0" width="1" height="30"/><rect x="75" y="0" width="3" height="30"/><rect x="83" y="0" width="1" height="30"/><rect x="88" y="0" width="2" height="30"/></svg>
     <div class="hero-foot">
       <p>Merancang dan mengamankan jaringan dengan Cisco &amp; MikroTik, membangun infrastruktur virtual di Proxmox, lalu menuliskannya jadi kode.</p>
-      <a href="#work" style="border-bottom:1px solid var(--line); font-size:13px; font-family:var(--mono); padding-bottom:2px;">Lihat proyek ↓</a>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head"><h2>Proyek Terpilih</h2><span>04 total</span></div>
-    <div class="worklist">
-      <a href="#"><div class="work-l"><span class="tag">Networking</span><span class="title">Home Lab Multi-VLAN</span></div><span class="arrow">↗</span></a>
-      <a href="#"><div class="work-l"><span class="tag">Cloud & Virtualisasi</span><span class="title">Self-Hosted App Server</span></div><span class="arrow">↗</span></a>
-      <a href="#"><div class="work-l"><span class="tag">Automation</span><span class="title">Network Uptime Monitor</span></div><span class="arrow">↗</span></a>
-      <a href="#"><div class="work-l"><span class="tag">Web Development</span><span class="title">Portfolio Dashboard API</span></div><span class="arrow">↗</span></a>
+      <a href="#about" style="border-bottom:1px solid var(--line); font-size:13px; font-family:var(--mono); padding-bottom:2px;">Selengkapnya ↓</a>
     </div>
   </div>
 </section>
@@ -172,11 +151,11 @@ footer{padding:50px 0 60px;}
     <div class="foot-grid">
       <div class="foot-col">
         <h4>Sosial</h4>
-        <a href="#">LinkedIn</a><a href="#">GitHub</a><a href="mailto:padio@mail.dev">Email</a>
+        <a href="https://www.linkedin.com/in/padio-jufendra">LinkedIn</a><a href="https://github.com/teraaaa-it">GitHub</a><a href="mailto:padiojufendra2@gmail.com">Email</a>
       </div>
       <div class="foot-col">
         <h4>Navigasi</h4>
-        <a href="#work">Proyek</a><a href="#about">Tentang</a><a href="#faq">FAQ</a>
+        <a href="#about">Tentang</a><a href="#faq">FAQ</a>
       </div>
     </div>
     <div class="copyright"><span>Padio Jufendra © 2026</span><span>Kembali ke <a href="#top" style="color:inherit;text-decoration:underline;">atas</a></span></div>
