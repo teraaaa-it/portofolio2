@@ -1,9 +1,69 @@
+<?php
+/**
+ * Portfolio — Padio Jufendra
+ *
+ * This file serves as the main entry point.
+ * Dynamic sections (projects, capabilities, certifications, FAQ)
+ * are powered by PHP arrays so you can easily update content
+ * without touching the HTML structure.
+ */
+
+// ─── DATA ────────────────────────────────────────────────────────────
+$site = [
+    'name'  => 'Padio Jufendra',
+    'title' => 'Padio Jufendra — Portfolio',
+    'email' => 'padio@mail.dev',
+    'year'  => date('Y'),
+];
+
+$projects = [
+    ['tag' => 'Networking',           'title' => 'Home Lab Multi-VLAN',      'url' => '#'],
+    ['tag' => 'Cloud & Virtualisasi', 'title' => 'Self-Hosted App Server',   'url' => '#'],
+    ['tag' => 'Automation',           'title' => 'Network Uptime Monitor',   'url' => '#'],
+    ['tag' => 'Web Development',      'title' => 'Portfolio Dashboard API',  'url' => '#'],
+];
+
+$capabilities = [
+    ['n' => '01', 'label' => 'Network Engineering'],
+    ['n' => '02', 'label' => 'Systems Admin'],
+    ['n' => '03', 'label' => 'Virtualisasi'],
+    ['n' => '04', 'label' => 'Web Development'],
+];
+
+$certifications = [
+    ['name' => 'Cisco CCNA',     'year' => '2026'],
+    ['name' => 'MikroTik MTCNA', 'year' => '2026'],
+];
+
+$faqs = [
+    [
+        'question' => 'Layanan apa saja yang bisa saya bantu?',
+        'answer'   => 'Konfigurasi jaringan (routing, VLAN, firewall), setup server virtual di Proxmox, dan pengembangan web dasar.',
+        'open'     => true,
+    ],
+    [
+        'question' => 'Apakah bisa kerja remote?',
+        'answer'   => 'Bisa, terutama untuk pekerjaan konfigurasi jarak jauh dan pengembangan. Untuk instalasi fisik menyesuaikan lokasi.',
+        'open'     => false,
+    ],
+    [
+        'question' => 'Bagaimana cara mulai kerja sama?',
+        'answer'   => 'Kirim email singkat tentang kebutuhan proyek Anda, saya akan balas dengan estimasi waktu dan langkah berikutnya.',
+        'open'     => false,
+    ],
+];
+
+// ─── HELPERS ─────────────────────────────────────────────────────────
+function e(string $text): string {
+    return htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Padio Jufendra — Portfolio</title>
+<title><?= e($site['title']) ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -45,6 +105,15 @@ section{padding:60px 0; border-bottom:1px solid var(--line);}
 .sec-head h2{font-family:var(--display); font-size:28px; text-transform:uppercase; margin:0; letter-spacing:-0.01em;}
 .sec-head span{font-family:var(--mono); font-size:12px; color:var(--sub);}
 
+/* WORKS */
+.worklist a{display:flex; align-items:center; justify-content:space-between; padding:26px 4px; border-top:1px solid var(--line); gap:20px; transition:background .15s;}
+.worklist a:first-child{border-top:none}
+.worklist a:hover{background:rgba(255,255,255,.02); color:var(--accent);}
+.work-l{display:flex; flex-direction:column; gap:4px;}
+.work-l .tag{font-family:var(--mono); font-size:11px; color:var(--sub); text-transform:uppercase;}
+.work-l .title{font-family:var(--display); font-size:clamp(20px,3vw,30px); text-transform:uppercase;}
+.arrow{font-size:22px; flex:none;}
+
 /* CAPABILITIES */
 .caplist{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
 @media(max-width:760px){.caplist{grid-template-columns:1fr 1fr}}
@@ -82,8 +151,8 @@ footer{padding:50px 0 60px;}
 <body>
 
 <header><div class="header-in">
-  <div class="wordmark">PADIO JUFENDRA</div>
-  <nav><a href="#about">Tentang</a><a href="#faq">FAQ</a><a href="#contact">Kontak</a></nav>
+  <div class="wordmark"><?= e(strtoupper($site['name'])) ?></div>
+  <nav><a href="#work">Proyek</a><a href="#about">Tentang</a><a href="#faq">FAQ</a><a href="#contact">Kontak</a></nav>
 </div></header>
 
 <section class="hero">
@@ -94,30 +163,53 @@ footer{padding:50px 0 60px;}
     <svg class="barcode" viewBox="0 0 300 30" fill="var(--ink)"><rect x="0" y="0" width="2" height="30"/><rect x="6" y="0" width="1" height="30"/><rect x="10" y="0" width="3" height="30"/><rect x="18" y="0" width="1" height="30"/><rect x="23" y="0" width="4" height="30"/><rect x="31" y="0" width="2" height="30"/><rect x="37" y="0" width="1" height="30"/><rect x="42" y="0" width="3" height="30"/><rect x="50" y="0" width="1" height="30"/><rect x="55" y="0" width="2" height="30"/><rect x="61" y="0" width="4" height="30"/><rect x="70" y="0" width="1" height="30"/><rect x="75" y="0" width="3" height="30"/><rect x="83" y="0" width="1" height="30"/><rect x="88" y="0" width="2" height="30"/></svg>
     <div class="hero-foot">
       <p>Merancang dan mengamankan jaringan dengan Cisco &amp; MikroTik, membangun infrastruktur virtual di Proxmox, lalu menuliskannya jadi kode.</p>
-      <a href="#about" style="border-bottom:1px solid var(--line); font-size:13px; font-family:var(--mono); padding-bottom:2px;">Selengkapnya ↓</a>
+      <a href="#work" style="border-bottom:1px solid var(--line); font-size:13px; font-family:var(--mono); padding-bottom:2px;">Lihat proyek ↓</a>
     </div>
   </div>
 </section>
 
+<!-- PROYEK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><h2>Proyek Terpilih</h2><span><?= str_pad(count($projects), 2, '0', STR_PAD_LEFT) ?> total</span></div>
+    <div class="worklist">
+      <?php foreach ($projects as $p): ?>
+      <a href="<?= e($p['url']) ?>">
+        <div class="work-l">
+          <span class="tag"><?= e($p['tag']) ?></span>
+          <span class="title"><?= e($p['title']) ?></span>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<!-- KAPABILITAS -->
 <section id="capabilities">
   <div class="wrap">
     <div class="sec-head"><h2>Kapabilitas</h2><span>&amp; keahlian</span></div>
     <div class="caplist">
-      <div class="capitem"><div class="n">01</div><div class="t">Network Engineering</div></div>
-      <div class="capitem"><div class="n">02</div><div class="t">Systems Admin</div></div>
-      <div class="capitem"><div class="n">03</div><div class="t">Cloud Computing</div></div>
-      <div class="capitem"><div class="n">04</div><div class="t">Web Development</div></div>
+      <?php foreach ($capabilities as $cap): ?>
+      <div class="capitem"><div class="n"><?= e($cap['n']) ?></div><div class="t"><?= e($cap['label']) ?></div></div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
 
+<!-- TENTANG -->
 <section id="about">
   <div class="wrap about-grid">
     <div>
       <h2 style="font-family:var(--display); text-transform:uppercase; font-size:28px; margin:0 0 20px;">Tentang</h2>
       <div class="certs">
-        <div class="certrow"><span>Cisco CCNA</span><span class="yr">2026</span></div>
-        <div class="certrow"><span>MikroTik MTCNA</span><span class="yr">2026</span></div>
+        <?php foreach ($certifications as $i => $cert): ?>
+        <div class="certrow<?= $i === 0 ? '' : '' ?>">
+          <span><?= e($cert['name']) ?></span>
+          <span class="yr"><?= e($cert['year']) ?></span>
+        </div>
+        <?php endforeach; ?>
       </div>
     </div>
     <div>
@@ -128,37 +220,36 @@ footer{padding:50px 0 60px;}
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
   <div class="wrap">
     <div class="sec-head"><h2>FAQ</h2><span>pertanyaan umum</span></div>
-    <details class="faq-item" open>
-      <summary>Layanan apa saja yang bisa saya bantu?<span class="plus">+</span></summary>
-      <div class="a">Konfigurasi jaringan (routing, VLAN, firewall), setup server virtual di Proxmox, dan pengembangan web dasar.</div>
+    <?php foreach ($faqs as $faq): ?>
+    <details class="faq-item"<?= $faq['open'] ? ' open' : '' ?>>
+      <summary><?= e($faq['question']) ?><span class="plus">+</span></summary>
+      <div class="a"><?= e($faq['answer']) ?></div>
     </details>
-    <details class="faq-item">
-      <summary>Apakah bisa kerja remote?<span class="plus">+</span></summary>
-      <div class="a">Bisa, terutama untuk pekerjaan konfigurasi jarak jauh dan pengembangan. Untuk instalasi fisik menyesuaikan lokasi.</div>
-    </details>
-    <details class="faq-item">
-      <summary>Bagaimana cara mulai kerja sama?<span class="plus">+</span></summary>
-      <div class="a">Kirim email singkat tentang kebutuhan proyek Anda, saya akan balas dengan estimasi waktu dan langkah berikutnya.</div>
-    </details>
+    <?php endforeach; ?>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
         <h4>Sosial</h4>
-        <a href="https://www.linkedin.com/in/padio-jufendra">LinkedIn</a><a href="https://github.com/teraaaa-it">GitHub</a><a href="mailto:padiojufendra2@gmail.com">Email</a>
+        <a href="#">LinkedIn</a><a href="#">GitHub</a><a href="mailto:<?= e($site['email']) ?>">Email</a>
       </div>
       <div class="foot-col">
         <h4>Navigasi</h4>
-        <a href="#about">Tentang</a><a href="#faq">FAQ</a>
+        <a href="#work">Proyek</a><a href="#about">Tentang</a><a href="#faq">FAQ</a>
       </div>
     </div>
-    <div class="copyright"><span>Padio Jufendra © 2026</span><span>Kembali ke <a href="#top" style="color:inherit;text-decoration:underline;">atas</a></span></div>
+    <div class="copyright">
+      <span><?= e($site['name']) ?> &copy; <?= e($site['year']) ?></span>
+      <span>Kembali ke <a href="#top" style="color:inherit;text-decoration:underline;">atas</a></span>
+    </div>
   </div>
 </footer>
 
